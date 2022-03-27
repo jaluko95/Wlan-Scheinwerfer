@@ -5,7 +5,7 @@
 const char* SSID = "SSID";
 const char* PSK = "PASSWORD";
 
-String server = "http://Steuerung_1/sendData.php";
+String server = "http://Steuerung_1/sendData.php"; //Adresse des RPi
 
 void setup() {
   pinMode(D0, OUTPUT);
@@ -15,7 +15,7 @@ void setup() {
 }
  
 void loop() {
-  if(WiFi.status() != WL_CONNECTED){
+  if(WiFi.status() != WL_CONNECTED){ //WLAN Verbindung prüfen und ggf. herstellen
     WiFi.begin(SSID, PSK);
     
     digitalWrite(2, HIGH);   // Onboard LED blinkt falls nicht verbunden
@@ -27,16 +27,16 @@ void loop() {
     digitalWrite(2, LOW);    
     delay(1000);
   }
-  else{
+  else{ //Wenn WLAN Verbindung besteht
     HTTPClient http;
     String path = server + "?id=2"; //Dieser Scheinwerfer hat die ID 2 
     http.begin(path.c_str());
 
-    int httpResponseCode = http.GET(); //Der Server antwortet mit 1 oder 0 
+    int httpResponseCode = http.GET(); 
     String payload = "0";
     
-    if (httpResponseCode > 0){
-      payload = http.getString();
+    if (httpResponseCode >= 0){ // 0=success; -1=con. failed; -2=error_api; -3=time_out; -4=invalid_response
+      payload = http.getString(); //Der Server antwortet mit 1 oder 0 
 
       //GPIOS schalten
       if(payload.toInt()==0){ //aus

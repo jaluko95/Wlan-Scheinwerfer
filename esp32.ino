@@ -29,7 +29,7 @@ void loop() {
   }
   else{
     HTTPClient http;
-    String path = server + "?id=2";  
+    String path = server + "?id=2"; //Dieser Scheinwerfer hat die ID 2 
     http.begin(path.c_str());
 
     int httpResponseCode = http.GET();

@@ -5,7 +5,7 @@
 const char* SSID = "SSID";
 const char* PSK = "PASSWORD";
 
-String server = "http://Steuerung_1/sendData.php"; //Adresse des RPi
+String server = "http://Steuerung_1/getData.php"; //Adresse(Netzwerkname) des steuernden RPi und Skript zum Abfragen des Status
 
 void setup() {
   pinMode(D0, OUTPUT);

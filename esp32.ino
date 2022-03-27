@@ -32,7 +32,7 @@ void loop() {
     String path = server + "?id=2"; //Dieser Scheinwerfer hat die ID 2 
     http.begin(path.c_str());
 
-    int httpResponseCode = http.GET();
+    int httpResponseCode = http.GET(); //Der Server antwortet mit 1 oder 0 
     String payload = "0";
     
     if (httpResponseCode > 0){

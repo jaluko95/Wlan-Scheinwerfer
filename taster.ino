@@ -2,8 +2,8 @@
 #include <ESP8266HTTPClient.h>
 #include <WiFiClient.h>
  
-const char* SSID = "WLAN-UNALI";
-const char* PSK = "7549135523943793";
+const char* SSID = "SSID";
+const char* PSK = "PASSWORD";
 
 String server = "http://192.168.2.109/";
 String path_getSpot1 = server + "getData.php?id=1";
